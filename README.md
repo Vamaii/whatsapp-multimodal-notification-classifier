@@ -1,130 +1,224 @@
-# HackerRank Orchestrate
+# WhatsApp Multimodal Notification Classifier
 
-Starter repository for the **HackerRank Orchestrate** 24-hour hackathon.
+A multimodal notification routing pipeline built for the **HackerRank Orchestrate (August 2026)** hackathon.
 
-## Message Notification Router
+The goal is to classify WhatsApp messages into one of three actions:
 
-Build an AI-powered system for WhatsApp that decides which messages deserve immediate attention, which should wait, and which should be muted.
+- 🔔 Notify
+- 📰 Digest
+- 🔕 Mute
 
-The system must reason over multimodal messages, including text messages, image posters/screenshots, and voice notes.
+The project handles text, images, and voice notes by converting every message into a common representation before making a final routing decision.
 
-WhatsApp is noisy. A user can receive family chats, society notices, school updates, co-worker messages, business account promotions, image posters, voice notes, and scams in the same message stream. Treating every message the same creates two bad outcomes: important messages get missed, and unwanted or risky messages interrupt the user.
-
-Read [`problem_statement.md`](./problem_statement.md) for the full task spec, input/output schema, allowed values, and submission format.
+> **Note**
+> This project was not submitted before the hackathon deadline due to free-tier API quota limits and last min network, charging issues. The implementation is published here as a record of the work and the design decisions that went into it.
 
 ---
 
-## Repository Layout
+# Features
 
-```text
+- Text, image, and voice message support
+- Unified multimodal processing pipeline
+- Evidence-based personalization using user history
+- Provider-independent LLM interface
+- Prompt injection hardening
+- Decision validation layer
+- Detailed debugging and tracing support
+
+---
+
+# Project Structure
+
+```
 .
-├── AGENTS.md                         # Rules for AI coding tools + transcript logging
-├── problem_statement.md              # Full challenge statement
-├── README.md                         # You are here
-└── dataset/
-    ├── messages.csv                  # Messages to route
-    ├── output.csv                    # Blank submission template
-    ├── sample_messages.csv           # Solved examples
-    ├── users.csv                     # User notification behavior
-    ├── groups.csv                    # Group metadata
-    ├── group_members.csv             # User-group relationships
-    ├── business_accounts.csv         # Business sender metadata
-    ├── user_business_history.csv     # User-business history
-    ├── message_history.csv           # Historical messages
-    ├── message_events.csv            # User reactions to historical messages
-    ├── images.csv                    # Image IDs and media file paths
-    ├── voice_notes.csv               # Voice note IDs and media file paths
-    ├── daily_notification_summary.csv
-    └── media/
-        ├── images/
-        └── audio/
+├── code/
+│   ├── loader.py
+│   ├── evidence.py
+│   ├── media.py
+│   ├── prompt_builder.py
+│   ├── decision.py
+│   ├── validator.py
+│   ├── reasoners.py
+│   ├── llm_clients.py
+│   ├── debug_logger.py
+│   └── main.py
+│
+├── dataset/
+│
+└── README.md
 ```
 
 ---
 
-## What You Need to Build
+# How it Works
 
-For every row in `dataset/messages.csv`, produce one row in `output.csv` with:
+```
+CSV Dataset
+      │
+      ▼
+ loader.py
+      │
+      ▼
+ evidence.py
+      │
+      ▼
+ media.py
+      │
+      ▼
+ prompt_builder.py
+      │
+      ▼
+ decision.py
+      │
+      ▼
+ validator.py
+      │
+      ▼
+ output.csv
+```
 
-| Column | Meaning |
-|---|---|
-| `message_id` | Incoming message ID |
-| `action` | One of `notify`, `digest`, or `mute` |
-| `message_type` | Best-fit message category |
-| `reason` | Short human-readable explanation |
-| `confidence` | Number from `0` to `1` |
-| `evidence_message_ids` | Historical message IDs used as evidence; write `none` if there is no useful evidence |
+The pipeline separates deterministic processing from LLM reasoning.
 
-Your system should make personalized decisions using the provided message, user, group, business, media, and historical interaction data.
-For image and voice-note messages, `images.csv` and `voice_notes.csv` only provide file paths; your system should inspect the media files themselves.
-
----
-
-## Suggested Workflow
-
-1. Inspect `dataset/sample_messages.csv` to understand the expected output format.
-2. Load `dataset/messages.csv` and all relevant context files.
-3. Build your routing system using any approach: LLMs, retrieval, rules, classifiers, agents, or hybrids.
-4. Write predictions to `output.csv`.
-5. Evaluate your approach on the solved sample rows before submitting.
-
-You may use any language or runtime. Python, JavaScript, and TypeScript are all reasonable choices.
-
----
-
-## Requirements
-
-Your solution must:
-
-- be runnable from the terminal
-- read the provided files from `dataset/`
-- produce a valid `output.csv`
-- include one prediction for every `message_id` in `dataset/messages.csv`
-- not use organizer-only files or hardcoded labels
-
-If you use API keys or secrets, read them from environment variables. Never hardcode secrets in the repo.
+Python is responsible for gathering evidence, validating inputs, and applying hard safety rules. The language model only performs the final reasoning step using the structured evidence provided to it.
 
 ---
 
-## Evaluation
+# Design Decisions
 
-Your `output.csv` will be compared against hidden ground-truth labels.
+## Decision Model
 
-The scoring will consider:
+The router does not rely on manually written rules such as:
 
-- correctness of `action`
-- correctness of `message_type`
-- usefulness and consistency of `reason`
-- whether `evidence_message_ids` point to relevant historical messages
-- reasonable confidence calibration
+> "If the sender is X, always notify."
 
-Strong systems will combine retrieval, structured metadata, behavioral history, safety checks, OCR/ASR handling, and contextual reasoning.
+Instead, it builds an **evidence card** from historical interactions and lets the reasoning model make the final decision.
+
+For every incoming message, Python computes objective evidence such as:
+
+- Number of messages previously opened
+- Replies sent
+- Messages dismissed
+- Messages reported
+- Sender verification
+- Domain mismatch
+- User history with the sender
+- Similar historical messages
+- Evidence quality (amount of historical data)
+- Contradictory signals
+
+Earlier versions attempted to combine these into a single engagement score:
+
+```
+engagement =
+0.4 × opened +
+0.4 × replied -
+0.8 × reported -
+0.2 × dismissed
+```
+
+The more we tested it, the less we liked it.
+
+Those weights were arbitrary—they weren't learned from data or backed by any justification. Instead of pretending this number represented "importance", the final design passes the raw evidence to the LLM.
+
+For example, instead of saying:
+
+```
+Engagement = 0.73
+```
+
+the model receives information like:
+
+```
+Sender history
+--------------
+Opened: 18
+Replies: 7
+Dismissed: 2
+Reported: 0
+
+Evidence quality: High
+
+Contradictions:
+None
+```
+
+The reasoning model is then responsible for interpreting these facts in context rather than relying on a handcrafted scoring formula.
+
+This separation keeps deterministic processing in Python while leaving subjective judgment to the language model.
+
+
+## A Small Design Change That Had a Big Impact
+
+One change completely altered how the router makes decisions.
+
+Instead of asking:
+
+> "Who sent this message?"
+
+the prompt asks:
+
+> "What is the cost of ignoring this message?"
+
+This shifts the focus from sender identity to consequence.
+
+For example:
+
+- A package delivery update may be important even if it's from an unfamiliar business.
+- A frequently muted group message may still deserve a notification if it announces an emergency.
+- An OTP phishing message should never be promoted simply because it appears urgent.
+
+Thinking in terms of consequences produced much more consistent decisions than relying only on sender history.
+
+# Running the Project
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Vamaii/whatsapp-multimodal-notification-classifier.git
+cd whatsapp-multimodal-notification-classifier
+```
+
+Install dependencies:
+
+```bash
+pip install -r code/requirements.txt
+```
+
+Create a `.env` file containing the required API keys.
+
+Run:
+
+```bash
+python code/main.py
+```
+
+Predictions are written to:
+
+```
+dataset/output.csv
+```
 
 ---
 
-## Chat Transcript Logging
+# Tech Stack
 
-This repo includes an [`AGENTS.md`](./AGENTS.md) file for AI coding tools. It asks compatible tools to append conversation summaries to:
-
-| Platform | Path |
-|---|---|
-| macOS / Linux | `$HOME/hackerrank_orchestrate_august26/log.txt` |
-| Windows | `%USERPROFILE%\hackerrank_orchestrate_august26\log.txt` |
-
-Upload this log as your chat transcript at submission time. Do not paste secrets into the chat.
+- Python
+- Pandas
+- Gemini API
+- Groq API
+- OpenRouter
+- OCR / Speech-to-Text (multimodal models)
 
 ---
 
-## Submission
+# Current Status
 
-Submit the following files as instructed by HackerRank:
+The deterministic parts of the pipeline were tested against the provided dataset.
 
-1. **Code zip**: full runnable solution, prompts/configs, README, and any evaluation files.
-2. **Predictions CSV**: final `output.csv` for all rows in `dataset/messages.csv`.
-3. **Chat transcript**: the `log.txt` described above.
+The LLM-based pipeline is implemented, but a complete end-to-end run could not be finished before the hackathon deadline because the available free-tier API quota was exhausted.
 
-Before submitting, confirm:
+---
 
-- `output.csv` has one row per row in `dataset/messages.csv`.
-- `output.csv` has the exact required columns in the exact required order.
-- Your runnable code and setup instructions are included in `code.zip`.
+# License
+
+This project is published for learning and portfolio purposes.
