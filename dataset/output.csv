@@ -1,111 +1,111 @@
 message_id,action,message_type,reason,confidence,evidence_message_ids
-msg_023,,,,,
-msg_091,,,,,
-msg_090,,,,,
-msg_048,,,,,
-msg_040,,,,,
-msg_075,,,,,
-msg_005,,,,,
-msg_104,,,,,
-msg_069,,,,,
-msg_107,,,,,
-msg_070,,,,,
-msg_003,,,,,
-msg_099,,,,,
-msg_008,,,,,
-msg_092,,,,,
-msg_060,,,,,
-msg_004,,,,,
-msg_030,,,,,
-msg_045,,,,,
-msg_052,,,,,
-msg_009,,,,,
-msg_071,,,,,
-msg_016,,,,,
-msg_065,,,,,
-msg_038,,,,,
-msg_086,,,,,
-msg_014,,,,,
-msg_094,,,,,
-msg_029,,,,,
-msg_105,,,,,
-msg_002,,,,,
-msg_010,,,,,
-msg_078,,,,,
-msg_013,,,,,
-msg_018,,,,,
-msg_044,,,,,
-msg_032,,,,,
-msg_106,,,,,
-msg_006,,,,,
-msg_109,,,,,
-msg_108,,,,,
-msg_019,,,,,
-msg_088,,,,,
-msg_056,,,,,
-msg_027,,,,,
-msg_050,,,,,
-msg_083,,,,,
-msg_063,,,,,
-msg_033,,,,,
-msg_061,,,,,
-msg_020,,,,,
-msg_017,,,,,
-msg_058,,,,,
-msg_026,,,,,
-msg_047,,,,,
-msg_046,,,,,
-msg_042,,,,,
-msg_079,,,,,
-msg_098,,,,,
-msg_037,,,,,
-msg_007,,,,,
-msg_085,,,,,
-msg_001,,,,,
-msg_021,,,,,
-msg_028,,,,,
-msg_012,,,,,
-msg_064,,,,,
-msg_103,,,,,
-msg_031,,,,,
-msg_057,,,,,
-msg_087,,,,,
-msg_067,,,,,
-msg_039,,,,,
-msg_082,,,,,
-msg_066,,,,,
-msg_049,,,,,
-msg_015,,,,,
-msg_051,,,,,
-msg_097,,,,,
-msg_089,,,,,
-msg_053,,,,,
-msg_059,,,,,
-msg_024,,,,,
-msg_072,,,,,
-msg_036,,,,,
-msg_076,,,,,
-msg_055,,,,,
-msg_102,,,,,
-msg_080,,,,,
-msg_093,,,,,
-msg_034,,,,,
-msg_035,,,,,
-msg_101,,,,,
-msg_041,,,,,
-msg_011,,,,,
-msg_110,,,,,
-msg_095,,,,,
-msg_074,,,,,
-msg_073,,,,,
-msg_054,,,,,
-msg_068,,,,,
-msg_100,,,,,
-msg_062,,,,,
-msg_096,,,,,
-msg_043,,,,,
-msg_077,,,,,
-msg_081,,,,,
-msg_025,,,,,
-msg_084,,,,,
-msg_022,,,,,
+msg_023,notify,business_update,"The message appears to be a legitimate update from a verified business, and the user has recent activity with the sender, making it relevant to notify the user.",0.7,message_0243
+msg_091,mute,scam,"The message exhibits high-risk behavior, including requesting sensitive information and using urgency language, and has a history of being dismissed and reported by the user.",0.75,message_0381;message_0238
+msg_090,notify,personal,"The message is novel, not urgent, and seems to be a genuine inquiry about a package mix-up, so notifying the user is appropriate.",0.6,none
+msg_048,mute,scam,"The message exhibits strong scam patterns, including a QR code for payment, urgency language, and a history of dismissed and reported messages from the same sender.",0.75,message_0152;message_0151
+msg_040,mute,spam,"The message contains scam-like language and is similar to a previous message that was dismissed. The user has also muted the group, indicating they do not want to receive messages like this.",0.7,message_0136
+msg_075,notify,business_update,"The message contains time-sensitive information about the user's ride status, and the user has a recent and relevant interaction with the business.",0.8,message_0206
+msg_005,digest,business_update,"The message appears to be a marketplace post, and the user can review it at their convenience. The lack of urgency language and the image format suggest it's not time-sensitive.",0.8,message_0390;message_0049
+msg_104,notify,personal,"The message appears to be a genuine personal message about collecting an item, and the user should be notified to make a timely decision.",0.7,message_0115;message_0050
+msg_069,digest,greeting,"The message is a general greeting with no urgency or significant consequences if ignored, and the user has previously dismissed similar messages.",0.8,message_0194;message_0193
+msg_107,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_070,mute,scam,"The message exhibits characteristics of a scam, including urgency language, a request to open a link, and a claim of an OTP leak, which are common tactics used to deceive recipients.",0.75,message_0214;message_0369
+msg_003,notify,business_update,"The message is a relevant update about a pending order, and the user has a history of engaging with the sender.",0.85,message_0031
+msg_099,notify,personal,"The message is from a trusted sender with a history of legitimate interactions, and it contains relevant information for an upcoming event (11 AM standup).",0.85,message_0055;message_0227
+msg_008,digest,business_update,"The message is a routine review request from a verified business, and the user has received similar messages in the past. It can be digested and not immediately notified.",0.7,message_0072;message_0296
+msg_092,digest,business_update,"The message is an informational update from a verified business, but it does not contain any urgent or time-sensitive information, so it can be digested at the user's convenience.",0.6,none
+msg_060,notify,business_update,"The message contains new and relevant information about a research internship opportunity, and the user has a history of engaging with similar messages from this sender.",0.85,message_0176;message_0284
+msg_004,notify,business_update,"The message is a routine business update from a verified sender with whom the user has a strong relationship, but it contains time-sensitive information that requires the user's attention.",0.85,message_0245
+msg_030,digest,promotion,"The message appears to be a promotional post in a marketplace group, and the user has previously dismissed similar messages, so it's best to include it in a digest.",0.8,message_0115
+msg_045,notify,personal,"The message is urgent and requires immediate action from the user, and there is no evidence of risk or spam.",0.7,message_0146
+msg_052,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_009,digest,greeting,"The message is a low-priority, social message that can be digested at a later time, and the user has previously muted the group conversation.",0.7,message_0074
+msg_071,notify,personal,"The message appears to be a personal invitation for a social gathering within a family group, with no indication of urgency or risk.",0.7,message_0197
+msg_016,mute,scam,"The message contains suspicious language and requests the user to login and complete verification, which is a common phishing tactic, and the sender has a history of sending similar messages that have been reported by the user.",0.75,message_0087;message_0024
+msg_065,digest,business_update,"The message is likely a promotional or informational update from a verified business, and the user has a history of engaging with similar messages, but the image content and lack of urgency language suggest it can be digested at a later time.",0.7,message_0186;message_0261
+msg_038,mute,spam,"The message contains urgency language and chain letter tactics, but the low evidence quality and repetitive nature of the message indicate a high risk of scam.",0.7,message_0131
+msg_086,notify,business_update,"The message appears to be a business update, and the user has recent activity with the business, so notifying the user is the best course of action.",0.6,message_0222
+msg_014,digest,promotion,"The message is a promotional offer from a verified business, but the user has previously dismissed similar messages and opted out of promotions, so it's not critical to notify them immediately.",0.8,message_0017
+msg_094,digest,promotion,"The message is a promotional offer from a business the user has not interacted with recently, and it's not urgent or risky.",0.6,none
+msg_029,digest,unknown,"The message appears to be a marketplace post, and the user has a history with the sender, but it's not urgent or high-risk, so it can be digested.",0.8,message_0390;message_0113
+msg_105,mute,spam,"The message contains unverified health advice and has characteristics of a potential scam, and the user has previously dismissed similar messages from the sender.",0.7,message_0233
+msg_002,notify,urgent,"The message is time-sensitive, related to a work topic, and comes from a trusted sender in a professional context, making it important for the user to see it promptly.",0.95,message_0371;message_0003
+msg_010,digest,business_update,"The message is a feedback request from a verified business, and the user has recent activity with them. It's not urgent, but the user may want to provide feedback at their convenience.",0.8,message_0011
+msg_078,mute,scam,"The message contains high-risk language and actions, and the sender's history suggests a pattern of potentially scammy messages.",0.75,message_0212;message_0211
+msg_013,digest,promotion,"The message is a promotional offer, but it is not urgent or critical, and the user has not engaged with similar messages in the past.",0.6,message_0082;message_0081
+msg_018,mute,scam,"The message exhibits characteristics of a scam, including urgency and a reward claim, and has been reported by users before.",0.75,message_0092
+msg_044,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_032,notify,personal,"The message is a personal request from a group member, and the user has a moderate to strong relationship with the group.",0.8,message_0374;message_0119
+msg_106,notify,personal,The message contains time-sensitive information and requires the user's prompt attention to avoid missing the dance practice or arriving at the wrong location,0.7,message_0234
+msg_006,notify,business_update,"The message contains time-sensitive information about maintenance and is from a trusted source (an admin in a society group), making it relevant for the user to see promptly.",0.9,message_0410;message_0029
+msg_109,mute,scam,"The message exhibits high-risk behavior, including a request for payment and a QR code, and the user's history with this sender indicates a pattern of dismissals and reports, suggesting a scam.",0.75,message_0152;message_0151
+msg_108,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_019,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_088,mute,unknown,"The message is a failed media understanding attempt and does not contain any useful information, and the user has not engaged with the sender's previous messages",0.8,message_0115
+msg_056,notify,personal,"The message is about a time-sensitive, personal matter (a doctor appointment) that requires the user's attention and response.",0.85,message_0359;message_0226
+msg_027,digest,promotion,"The message is a promotional offer from a business the user has interacted with before, but it's not urgent and can be digested later",0.7,message_0272
+msg_050,notify,business_update,"The message is a business update related to the user's health, and the user has a history of interacting with the sender, but the sender's verification status and domain mismatch raise some concerns.",0.7,message_0156;message_0279
+msg_083,digest,unknown,"The message is novel and does not seem to have significant consequences if ignored, but its content is not clearly understood due to a media understanding failure.",0.6,message_0219
+msg_063,mute,scam,"The message exhibits characteristics of a phishing scam, including urgency language and a request for sensitive information, and similar messages have been reported in the past.",0.75,message_0182
+msg_033,notify,greeting,"The message is a non-urgent, personal greeting from a family group member with a strong relationship history, and there is no indication of risk. [validator: low urgency/consequence scores but action is notify -- confidence capped]",0.7,message_0409;message_0121
+msg_061,mute,spam,"The message appears to be a chain message with no significant content or urgency, and the user has previously muted the group and reported similar messages.",0.85,message_0194;message_0193
+msg_020,mute,scam,"The message contains suspicious language and a link, and the sender's history suggests a potential scam. The user's previous interactions with this sender have been dismissive.",0.7,message_0095;message_0096
+msg_017,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_058,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_026,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_047,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_046,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_042,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_079,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_098,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_037,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_007,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_085,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_001,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_021,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_028,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_012,mute,spam,"The message is a generic health tip with spam-like characteristics, and the user has a history of dismissing similar messages from this source.",0.8,message_0194
+msg_064,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_103,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_031,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_057,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_087,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_067,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_039,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_082,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_066,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_049,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_015,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_051,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_097,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_089,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_053,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_059,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_024,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_072,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_036,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_076,mute,scam,"Hard safety override: message either directly requests the user share/enter an OTP, or comes from a sender domain that doesn't match the official business domain combined with account-risk language (verify/restricted/wallet/refund/PIN, etc). Muted regardless of the user's usual engagement, per safety policy.",0.97,none
+msg_055,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_102,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_080,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_093,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_034,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_035,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_101,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_041,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_011,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_110,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_095,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_074,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_073,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_054,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_068,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_100,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_062,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_096,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_043,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_077,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_081,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_025,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_084,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none
+msg_022,digest,unknown,"LLM call failed after retries, defaulted to digest for manual review: groq_reason failed after 3 attempts: 429 Client Error: Too Many Requests for url: https://api.groq.com/openai/v1/chat/completions",0.1,none

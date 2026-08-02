@@ -1,0 +1,13 @@
+'''
+I built the solution completely using free-tier APIs because I didn't want to spend money unless I knew the approach was working. The pipeline itself worked as expected. The reasoning model was running through Groq, while media understanding was handled through OpenRouter.
+
+While processing the dataset, I kept running into API limits instead of code issues. Initially Groq started returning Tokens Per Minute (TPM) rate limit errors. After retrying multiple times and letting the program continue, it eventually started hitting the daily token quota (TPD) as well. At that point, the reasoning requests could no longer continue.
+
+For audio processing, OpenRouter returned a Payment Required error stating that audio requests require at least a $0.50 balance. Since I was using a free account, those requests could not be completed without adding credits.
+
+I considered adding credits to both groq and openrouter, but by then it was already close to the submission deadline. Also, using OpenRouter would only have solved the audio processing issue. The Groq daily token limit would still have prevented the entire dataset from finishing.
+
+So from what I observed, the overall architecture and code were functioning, but the free-tier API limits prevented processing the complete dataset before the deadline.
+
+
+'''
