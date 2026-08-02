@@ -5,3 +5,7 @@ __pycache__/
 .vscode/
 .idea/
 *.log
+debug_trace.jsonl
+AGENTS.md
+CLAUDE  .md
+dataset/output.csv
